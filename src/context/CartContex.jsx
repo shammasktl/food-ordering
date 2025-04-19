@@ -6,6 +6,8 @@ const CartContext = createContext({
     removeItem : (id) => {},
 });
 
+const cartReducer = (state, action) => {}
+
 const CartContextProvider = ({children}) => {
     useReducer()
     return (
