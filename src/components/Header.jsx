@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header id='main-header'>
       <div id='title'>
-        <img src={logo} alt="" />
+        <img src={logo} alt="The Ipsum Restaurant logo" />
         <h1>Ipsum</h1>
       </div>
       <nav>
