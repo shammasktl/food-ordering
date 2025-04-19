@@ -10,7 +10,6 @@ const Meals = () => {
             const response = await fetch("http://localhost:3000/meals")
     
             if(!response.ok) {
-                // ... handle error
             }
     
             const mealsData = await response.json()
@@ -21,8 +20,14 @@ const Meals = () => {
     }, [])
 
   return (
-    <ul>
-      
+    <ul id='meals'>
+      {
+        loadedMeals.map(meal => {
+            return (
+                <li key={meal.id}>{meal.name}</li>
+            )
+        })
+      }
     </ul>
   )
 }
