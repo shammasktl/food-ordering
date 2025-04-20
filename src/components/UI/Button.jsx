@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Button = ({children, textOnly, className}) => {
+const Button = ({children, textOnly, className, ...props}) => {
     let cssClasses = textOnly ? "text-button" : "button"
+    cssClasses += " " + className;
   return (
-    <button>
+    <button className={cssClasses} {...props}>
       {children}
     </button>
   )
