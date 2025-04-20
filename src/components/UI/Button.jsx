@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Button = ({children}) => {
+const Button = ({children, textOnly, className}) => {
+    let cssClasses = textOnly ? "text-button" : "button"
   return (
     <button>
       {children}
