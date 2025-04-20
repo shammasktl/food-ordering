@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import MealItem from './MealItem'
 
 const Meals = () => {
 
@@ -24,7 +25,7 @@ const Meals = () => {
       {
         loadedMeals.map(meal => {
             return (
-                <li key={meal.id}>{meal.name}</li>
+                <MealItem key={meal.id} meal={meal}/>
             )
         })
       }
