@@ -31,6 +31,11 @@ const Cart = () => {
   const handleRemove = (id) => {
     dispatch({ type: "REMOVE_MEAL", payload: { id } });
   };
+
+  const handleWrapUpOrder = () => {
+    progressDispatch({ type: "SHOW_CHECKOUT" });
+  }
+
   return (
     <Modal className="cart" open={progress === "cart"}>
       <h2>Your Cart</h2>
@@ -56,7 +61,7 @@ const Cart = () => {
           Close
         </Button>
         {cart.length > 0 && (
-          <Button onClick={handleCloseCart}>Wrap up your order</Button>
+          <Button onClick={handleWrapUpOrder}>Wrap up your order</Button>
         )}
       </p>
     </Modal>
