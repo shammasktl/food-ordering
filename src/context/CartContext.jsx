@@ -54,8 +54,7 @@ const CartProvider = ({ children }) => {
     cart,
     dispatch,
   };
-
-  console.log(cart);
+  
   return (
     <CartContext.Provider value={cartValue}>{children}</CartContext.Provider>
   );

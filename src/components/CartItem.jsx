@@ -2,34 +2,21 @@ import React from 'react'
 import { formatCurrency } from '../util/currencyFormatter'
 import { Trash2 } from 'lucide-react'
 import { useCart } from '../context/CartContext'
+import { X } from 'lucide-react'
 
-const CartItem = ({id, name, qty, price}) => {
+const CartItem = ({id, name, qty, price, onIncrement, onDecrement, onRemove}) => {
 
-    const { dispatch } = useCart();
-
-    const handleIncrement = () => {
-        dispatch({ type: "INCREASE_QUANTITY", payload: {id} })
-    }
-
-    const handleDecrement = () => {
-        dispatch({ type: "DECREASE_QUANTITY", payload: {id} })
-    }
-
-    const handleRemove = () => {
-        dispatch({ type: "REMOVE_MEAL", payload: {id} })
-    }
-    
   return (
     <li className='cart-item'>
       <p>
-        {name} - {qty} x {formatCurrency.format(price)}
+        {name} - {qty} <X size={16} /> {formatCurrency.format(price)}
       </p>
 
       <p className='cart-item-actions'>
-        <button onClick={handleDecrement}>-</button>
+        <button onClick={onDecrement}>-</button>
         <span>{qty}</span>
-        <button onClick={handleIncrement}>+</button>
-        <button onClick={handleRemove}><Trash2 /></button>
+        <button onClick={onIncrement}>+</button>
+        <button onClick={onRemove}><Trash2 /></button>
       </p>
     </li>
   )
