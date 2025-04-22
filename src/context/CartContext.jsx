@@ -19,19 +19,28 @@ const cartReducer = (state, action) => {
         );
       }
 
-      return [...state, {...action.payload, quantity: 1}]
+      return [...state, { ...action.payload, quantity: 1 }];
     case "REMOVE_MEAL":
-      return state.filter(meal => meal.id !== action.payload.id)
-
+      return state.filter((meal) => meal.id !== action.payload.id);
 
     case "INCREASE_QUANTITY":
-      return state.map(meal => meal.id === action.payload.id ? {...meal, quantity: meal.quantity + 1} : meal)
+      return state.map((meal) =>
+        meal.id === action.payload.id
+          ? { ...meal, quantity: meal.quantity + 1 }
+          : meal
+      );
 
     case "DECREASE_QUANTITY":
-      return state.map(meal => meal.id === action.payload.id ? {...meal, quantity: meal.quantity - 1} : meal).filter(meal => meal.quantity > 0)
+      return state
+        .map((meal) =>
+          meal.id === action.payload.id
+            ? { ...meal, quantity: meal.quantity - 1 }
+            : meal
+        )
+        .filter((meal) => meal.quantity > 0);
 
     case "CLEAR_CART":
-      return initialCart
+      return initialCart;
 
     default:
       return state;
@@ -43,13 +52,15 @@ const CartProvider = ({ children }) => {
 
   const cartValue = {
     cart,
-    dispatch
-  }
+    dispatch,
+  };
 
   console.log(cart);
-  return <CartContext.Provider value={cartValue}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={cartValue}>{children}</CartContext.Provider>
+  );
 };
 
-export const useCart = () => useContext(CartContext)
+export const useCart = () => useContext(CartContext);
 
 export default CartProvider;
