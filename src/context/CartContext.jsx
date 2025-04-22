@@ -7,6 +7,10 @@ const CartContext = createContext({
   dispatch : () => {}
 })
 
+const cartReducer = () => {
+  
+}
+
 const CartProvider = ({children}) => {
   return (
     <CartContext.Provider>
