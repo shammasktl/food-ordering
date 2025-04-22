@@ -1,8 +1,10 @@
 import React from 'react'
 import { formatCurrency } from '../util/currencyFormatter'
 import Button from './UI/Button'
+import { useCart } from '../context/CartContext'
 
 const MealItem = ({meal}) => {
+  const {dispatch} = useCart()
   return (
     <li className='meal-item'>
       <article>
@@ -13,7 +15,7 @@ const MealItem = ({meal}) => {
             <p className='meal-item-description'>{meal.description}</p>
         </div>
         <p className='meal-item-actions'>
-          <Button>Add to Cart</Button>
+          <Button onClick={() => {dispatch({type: "ADD_MEAL", payload:meal})}}>Add to Cart</Button>
         </p>
       </article>
     </li>
