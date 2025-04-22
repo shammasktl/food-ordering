@@ -8,9 +8,9 @@ const CartContext = createContext({
 })
 
 const cartReducer = (state, action) => {
+  const existingMeal = state.find(meal => meal.id === action.meal.id)
   switch(action.type) {
     case "ADD_MEAL":
-      // logic to add meal to cart
 
     case "REMOVE_MEAL":
       // logic to remove meal from cart
