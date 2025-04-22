@@ -28,7 +28,7 @@ const cartReducer = (state, action) => {
       return state.map(meal => meal.id === action.payload.id ? {...meal, quantity: meal.quantity + 1} : meal)
 
     case "DECREASE_QUANTITY":
-    // logic to decrease quantity of meal in cart
+      return state.map(meal => meal.id === action.payload.id ? {...meal, quantity: meal.quantity - 1} : meal).filter(meal => meal.quantity > 0)
 
     case "CLEAR_CART":
     // logic to clear cart
