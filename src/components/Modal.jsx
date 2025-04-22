@@ -5,8 +5,14 @@ const Modal = ({ children, open, className }) => {
   const dialog = useRef();
 
   useEffect(() => {
-    if (open) {
-      dialog.current.showModal();
+    if(open) {
+      if(!dialog.current.open) {
+        dialog.current.showModal();
+      }
+    } else {
+      if(dialog.current.open) {
+        dialog.current.close();
+      }
     }
   }, [open]);
   return createPortal(
