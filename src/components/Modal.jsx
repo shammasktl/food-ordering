@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { createPortal } from "react-dom"
 
 const Modal = ({children, open}) => {
+    const dialog = useRef()
+
   return createPortal(
-    <dialog open={open}>
+    <dialog>
       {children}
     </dialog>,
     document.getElementById("modal")
