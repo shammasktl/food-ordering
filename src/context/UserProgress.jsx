@@ -7,3 +7,13 @@ const UserProgressContext = createContext({
     showCheckout: () => {},
     hideCheckout: () => {},
 })
+
+const UserProgressProvider = ({children}) => {
+    return (
+        <UserProgressContext.Provider>
+            {children}
+        </UserProgressContext.Provider>
+    )
+}
+
+export default UserProgressProvider
