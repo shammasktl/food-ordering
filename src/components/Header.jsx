@@ -9,9 +9,7 @@ const Header = () => {
   const { cart } = useCart()
   const { progressDispatch } = useProgress()
 
-  const cartTotal = cart.reduce((acc, item) => (
-    acc + item.quantity
-  ), 0)
+  const cartTotal = cart.length
 
   const handleShowCart = () => {
     progressDispatch({ type: "SHOW_CART"})
@@ -24,7 +22,7 @@ const Header = () => {
         <h1>Ipsum</h1>
       </div>
       <nav>
-        <Button textOnly onClick={handleShowCart}>Cart ({cartTotal})</Button>
+        <Button textOnly onClick={handleShowCart}>Cart {cartTotal !== 0 && `(${cartTotal})`}</Button>
       </nav>
     </header>
   )
