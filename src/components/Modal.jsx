@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 
-const Modal = () => {
-  return (
-    <dialog>
-      
-    </dialog>
-  )
-}
+const Modal = ({ children, open, className }) => {
+  const dialog = useRef();
 
-export default Modal
+  useEffect(() => {
+    const modal = dialog.current;
+    if (open) {
+      modal.showModal();
+    }
+
+    return () => modal.close();
+  }, [open]);
+  return createPortal(
+    <dialog ref={dialog} className={`modal ${className}`}>{children}</dialog>,
+    document.getElementById("modal")
+  );
+};
+
+export default Modal;

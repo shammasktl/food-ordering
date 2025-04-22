@@ -150,7 +150,14 @@ h1 {
 }
 
 .cart-item p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin: 0;
+}
+
+.cart p > svg {
+  margin: 0 0.5rem;
 }
 
 .cart-item-actions {
