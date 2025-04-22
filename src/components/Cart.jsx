@@ -1,10 +1,14 @@
 import React from 'react'
 import Modal from './Modal'
 import { useCart } from '../context/CartContext'
+import { formatCurrency } from '../util/currencyFormatter'
 
 const Cart = () => {
     const { cart } = useCart()
 
+    const total = cart.reduce((totalPrice, cartedMeal) => (
+        totalPrice + (cartedMeal.price * cartedMeal.quantity)
+    ),0)
   return (
     <Modal className="cart">
         <h2>Your Cart</h2>
@@ -17,7 +21,7 @@ const Cart = () => {
             ))}
         </ul>
 
-        <p className='cart-total'></p>
+        <p className='cart-total'>{formatCurrency.format(total)}</p>
     </Modal>
   )
 }
