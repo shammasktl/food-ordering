@@ -1,14 +1,25 @@
-import { createContext } from "react";
+import { createContext,useReducer } from "react";
+
+const initialProgress = ""
+
 
 const UserProgressContext = createContext({
-    progress: "",
-    showCart: () => {},
-    hideCart: () => {},
-    showCheckout: () => {},
-    hideCheckout: () => {},
+    progress: initialProgress,
+    progressDispatch: () => {}
 })
 
+const progressReducer = () => {
+
+}
+
 const UserProgressProvider = ({children}) => {
+
+    const [progress, progressDispatch] = useReducer(progressReducer, initialProgress)
+
+    const progressContextValue = {
+        progress,
+        progressDispatch
+    }
     return (
         <UserProgressContext.Provider>
             {children}
