@@ -3,6 +3,7 @@ import Modal from './Modal'
 import { useCart } from '../context/CartContext'
 import { formatCurrency } from '../util/currencyFormatter'
 import Input from './UI/Input'
+import Button from './UI/Button'
 
 const Checkout = () => {
   const { cart } = useCart()
@@ -26,6 +27,11 @@ const Checkout = () => {
           <Input id="postal-code" label="Postal Code" type="text"  />
           <Input id="city" label="City" type="text"  />
         </div>
+
+        <p className="modal-actions">
+          <Button textOnly>Close</Button>
+          <Button>Confirm Order</Button>
+        </p>
       </form>
     </Modal>
   )
