@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useContext } from "react";
 
 const initialCart = [];
 
@@ -8,7 +8,7 @@ const CartContext = createContext({
 });
 
 const cartReducer = (state, action) => {
-  const existingMeal = state.find((meal) => meal.id === action.meal.id);
+  const existingMeal = state.find((meal) => meal.id === action.payload.id);
   switch (action.type) {
     case "ADD_MEAL":
       if (existingMeal) {
@@ -40,7 +40,15 @@ const cartReducer = (state, action) => {
 const CartProvider = ({ children }) => {
   const [cart, dispatch] = useReducer(cartReducer, initialCart);
 
-  return <CartContext.Provider>{children}</CartContext.Provider>;
+  const cartValue = {
+    cart,
+    dispatch
+  }
+
+  console.log(cart);
+  return <CartContext.Provider value={cartValue}>{children}</CartContext.Provider>;
 };
+
+export const useCart = () => useContext(CartContext)
 
 export default CartProvider;
