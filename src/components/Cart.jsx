@@ -4,6 +4,7 @@ import { useCart } from '../context/CartContext'
 import { formatCurrency } from '../util/currencyFormatter'
 import Button from './UI/Button'
 import { useProgress } from '../context/UserProgressContext'
+import CartItem from './CartItem'
 
 const Cart = () => {
     const { cart } = useCart()
@@ -22,9 +23,7 @@ const Cart = () => {
 
         <ul>
             {cart.map(cartedMeal => (
-                <li key={cartedMeal.id}>
-                    {cartedMeal.name} - {cartedMeal.quantity}
-                </li>
+                <CartItem key={cartedMeal.id} id={cartedMeal.id} name={cartedMeal.name} price={cartedMeal} qty={cartedMeal.quantity}/>
             ))}
         </ul>
 
