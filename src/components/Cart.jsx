@@ -37,7 +37,7 @@ const Cart = () => {
   }
 
   return (
-    <Modal className="cart" open={progress === "cart"}>
+    <Modal className="cart" open={progress === "cart"} onClose={handleCloseCart}>
       <h2>Your Cart</h2>
 
       <ul>
