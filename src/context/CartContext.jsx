@@ -21,10 +21,10 @@ const cartReducer = (state, action) => {
 
       return [...state, {...action.payload, quantity: 1}]
     case "REMOVE_MEAL":
-    // logic to remove meal from cart
+      return state.filter(meal => meal.id !== action.payload.id)
+
 
     case "INCREASE_QUANTITY":
-    // logic to increase quantity of meal in cart
 
     case "DECREASE_QUANTITY":
     // logic to decrease quantity of meal in cart
