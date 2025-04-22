@@ -10,8 +10,14 @@ const Cart = () => {
         <h2>Your Cart</h2>
 
         <ul>
-            
+            {cart.map(cartedMeal => (
+                <li key={cartedMeal.id}>
+                    {cartedMeal.name} - {cartedMeal.quantity}
+                </li>
+            ))}
         </ul>
+
+        <p className='cart-total'></p>
     </Modal>
   )
 }
