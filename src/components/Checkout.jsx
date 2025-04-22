@@ -1,10 +1,16 @@
 import React from 'react'
+import Modal from './Modal'
+import { useCart } from '../context/CartContext'
 
 const Checkout = () => {
+  const { cart } = useCart()
   return (
-    <form>
-      
-    </form>
+    <Modal>
+      <form>
+        <h2>Wrap up your order</h2>
+        <p>Total Amount: </p>
+      </form>
+    </Modal>
   )
 }
 
