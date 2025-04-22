@@ -34,10 +34,14 @@ const Cart = () => {
 
   const handleWrapUpOrder = () => {
     progressDispatch({ type: "SHOW_CHECKOUT" });
-  }
+  };
 
   return (
-    <Modal className="cart" open={progress === "cart"} onClose={handleCloseCart}>
+    <Modal
+      className="cart"
+      open={progress === "cart"}
+      onClose={progress === "cart" ? handleCloseCart : null}
+    >
       <h2>Your Cart</h2>
 
       <ul>
