@@ -39,6 +39,6 @@ const UserProgressProvider = ({children}) => {
     )
 }
 
-export const useUserProgress = () => useContext(UserProgressContext)
+export const useProgress = () => useContext(UserProgressContext)
 
 export default UserProgressProvider
