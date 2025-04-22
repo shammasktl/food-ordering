@@ -1,10 +1,12 @@
 import React from 'react'
+import { createPortal } from "react-dom"
 
 const Modal = ({children, open}) => {
-  return (
+  return createPortal(
     <dialog open={open}>
       {children}
-    </dialog>
+    </dialog>,
+    document.getElementById("modal")
   )
 }
 
