@@ -55,7 +55,9 @@ const Cart = () => {
         <Button textOnly onClick={handleCloseCart}>
           Close
         </Button>
-        <Button onClick={handleCloseCart}>Wrap up your order</Button>
+        {cart.length > 0 && (
+          <Button onClick={handleCloseCart}>Wrap up your order</Button>
+        )}
       </p>
     </Modal>
   );
