@@ -1,6 +1,7 @@
 import React from "react";
 import MealItem from "./MealItem";
 import useFetch from "../hooks/useFetch";
+import Error from "./Error";
 
 const requestConfig = {};
 
@@ -16,7 +17,7 @@ const Meals = () => {
   }
 
   if (error) {
-    return <p className="error">{error}</p>;
+    return <Error title="Failed to fetch meals" message={error} />;
   }
 
   return (
