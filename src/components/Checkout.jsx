@@ -23,6 +23,21 @@ const Checkout = () => {
   const handleConfirmOrder = (event) => {
     event.preventDefault();
 
+    const fd = new FormData(event.target);
+    const customerData = Object.fromEntries(fd.entries());
+
+    fetch("http://localhost:3000/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        order: {
+          items: cart,
+          customer: customerData,
+        },
+      }),
+    });
   };
 
   return (
@@ -31,7 +46,7 @@ const Checkout = () => {
         <h2>Wrap up your order</h2>
         <p>Total Amount: {formatCurrency.format(total)}</p>
 
-        <Input id="full-name" label="Full Name" type="text" />
+        <Input id="name" label="Full Name" type="text" />
         <Input id="email" label="E-mail Address" type="email" />
         <Input id="street" label="Street" type="text" />
         <div className="control-row">
