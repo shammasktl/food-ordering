@@ -1,36 +1,31 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import MealItem from './MealItem'
+import React from "react";
+import MealItem from "./MealItem";
+import useFetch from "../hooks/useFetch";
+
+const requestConfig = {};
 
 const Meals = () => {
+  const {
+    data: loadedMeals,
+    isLoading,
+    error,
+  } = useFetch("http://localhost:3000/meals", requestConfig, []);
 
-    const [loadedMeals, setLoadedMeals] = useState([])
+  if (isLoading) {
+    return <p className="loading">Loading...</p>;
+  }
 
-    useEffect(() => {
-        async function getMeals() {
-            const response = await fetch("http://localhost:3000/meals")
-    
-            if(!response.ok) {
-            }
-    
-            const mealsData = await response.json()
-    
-            setLoadedMeals(mealsData)
-        }
-        getMeals()
-    }, [])
+  if (error) {
+    return <p className="error">{error}</p>;
+  }
 
   return (
-    <ul id='meals'>
-      {
-        loadedMeals.map(meal => {
-            return (
-                <MealItem key={meal.id} meal={meal}/>
-            )
-        })
-      }
+    <ul id="meals">
+      {loadedMeals.map((meal) => (
+        <MealItem key={meal.id} meal={meal} />
+      ))}
     </ul>
-  )
-}
+  );
+};
 
-export default Meals
+export default Meals;
